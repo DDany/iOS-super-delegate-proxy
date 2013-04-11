@@ -31,8 +31,8 @@
 }
 
 - (void)forwardInvocation:(NSInvocation *)invocation {
-    if (realObject && [realObject methodSignatureForSelector:[invocation selector]]) [invocation invokeWithTarget:realObject];
-    if (otherObject && [otherObject methodSignatureForSelector:[invocation selector]]) [invocation invokeWithTarget:otherObject];
+    if (realObject && [realObject respondsToSelector:[invocation selector]]) [invocation invokeWithTarget:realObject];
+    if (otherObject && [otherObject respondsToSelector:[invocation selector]]) [invocation invokeWithTarget:otherObject];
 }
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
